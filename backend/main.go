@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 
@@ -16,7 +16,7 @@ func main() {
 	r.Use(cors.Default())
 
 	r.POST("/convert", func(c *gin.Context) {
-		xmlData, err := ioutil.ReadAll(c.Request.Body)
+		xmlData, err := io.ReadAll(c.Request.Body)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Não foi possível ler o corpo da requisição"})
 			return
