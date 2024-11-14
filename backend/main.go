@@ -13,7 +13,14 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.Use(cors.Default())
+	r.Use(
+		cors.New(cors.Config{
+			AllowOrigins:     []string{"*"},
+			AllowMethods:     []string{"GET", "POST"},
+			AllowHeaders:     []string{"Origin"},
+			AllowCredentials: true,
+		}),
+	)
 
 	r.POST("/convert", func(c *gin.Context) {
 		xmlData, err := io.ReadAll(c.Request.Body)
