@@ -15,9 +15,9 @@ func main() {
 	r := gin.Default()
 	r.Use(
 		cors.New(cors.Config{
-			AllowOrigins:     []string{"*"},
+			AllowOrigins:     []string{"https://xmljson.rdls.dev/"},
 			AllowMethods:     []string{"GET", "POST"},
-			AllowHeaders:     []string{"Origin"},
+			AllowHeaders:     []string{"Origin", "Content-Type"},
 			AllowCredentials: true,
 		}),
 	)

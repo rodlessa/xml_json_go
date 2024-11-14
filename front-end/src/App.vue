@@ -42,7 +42,7 @@ export default {
   methods: {
     async convertXmlToJson() {
       try {
-        const response = await axios.post('http://188.245.152.90:8080/convert', this.xmlInput, {
+        const response = await axios.post('http://localhost:8080/convert', this.xmlInput, {
           headers: { 'Content-Type': 'application/xml' },
         });
         this.jsonOutput = JSON.stringify(response.data, null, 2);
