@@ -26,6 +26,7 @@ jobs:
 
       - name: Run go mod tidy
         run: |
+          ls
           cd backend/backend  # If "backend" is the root folder containing main.go
           go mod tidy
 
