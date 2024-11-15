@@ -1,0 +1,41 @@
+name: Deploy Frontend
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend.yml'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: frontend
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Adjust to your Node.js version
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build the project
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Copy built files to /var/www/xmljson
+        run: |
+          sudo cp -r frontend/dist/* /var/www/xmljson/
+
+      - name: Restart PM2 portfolio process
+        run: |
+          pm2 stop portfolio || true
+          pm2 start portfolio
