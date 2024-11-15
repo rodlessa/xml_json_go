@@ -23,7 +23,7 @@ jobs:
 
       - name: Run go mod tidy
         run: |
-          cd backend
+          cd backend/backend
           go mod tidy
 
       - name: Restart myapp.service
