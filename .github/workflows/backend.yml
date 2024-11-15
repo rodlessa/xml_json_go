@@ -24,6 +24,7 @@ jobs:
       - name: Check Go version
         run: go version
 
+        
       - name: Restart myapp.service
         run: |
           sudo systemctl stop myapp.service
