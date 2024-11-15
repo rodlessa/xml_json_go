@@ -26,7 +26,7 @@ jobs:
 
       - name: Run go mod tidy
         run: |
-          cd backend  # If "backend" is the root folder containing main.go
+          cd backend/backend  # If "backend" is the root folder containing main.go
           go mod tidy
 
       - name: Restart myapp.service
